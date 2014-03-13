@@ -6,7 +6,14 @@ except ImportError:
 import sys
 sys.path.insert(0, '.')
 version = __import__('voluptuous').__version__
-long_description = open('README.rst').read()
+
+try:
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
+except ImportError:
+    print('WARNING: Could not locate pandoc, using Markdown long_description.')
+    long_description = open('README.md').read()
+
 description = long_description.splitlines()[0].strip()
 
 
@@ -22,7 +29,7 @@ setup(
     py_modules=['voluptuous'],
     author='Alec Thomas',
     author_email='alec@swapoff.org',
-    install_requires = [
+    install_requires=[
         'setuptools >= 0.6b1',
     ],
     )
