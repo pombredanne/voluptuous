@@ -12,3 +12,10 @@ dist
 .coverage
 .tox
 MANIFEST
+.idea
+venv
+docs/_build
+.vscode/
+.venv
+.pytest_cache
+htmlcov
